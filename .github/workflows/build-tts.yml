@@ -23,6 +23,25 @@ jobs:
       packages: write
 
     steps:
+      - name: Free disk space
+        run: |
+          echo "=== Disk space before cleanup ==="
+          df -h
+          echo ""
+          echo "Removing unnecessary packages..."
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/share/swift
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo docker image prune -af || true
+          echo ""
+          echo "=== Disk space after cleanup ==="
+          df -h
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -78,6 +97,25 @@ jobs:
       packages: write
 
     steps:
+      - name: Free disk space
+        run: |
+          echo "=== Disk space before cleanup ==="
+          df -h
+          echo ""
+          echo "Removing unnecessary packages..."
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo rm -rf /usr/local/share/boost
+          sudo rm -rf /usr/share/swift
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo docker image prune -af || true
+          echo ""
+          echo "=== Disk space after cleanup ==="
+          df -h
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
